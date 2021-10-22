@@ -5,11 +5,11 @@ import { useForm } from "react-hook-form";
 import { Grid, TextField } from '@mui/material'
 
 export const FirstStep = () => {
-  const { user } = useAuth0()
+  const { isLoading, isAuthenticated } = useAuth0()
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
 
-  if(!user) return <div>Please login</div>
+  if(isLoading || !isAuthenticated) return <div>Please login</div>
 
   return <Grid container>
     <form onSubmit={handleSubmit(onSubmit)}>

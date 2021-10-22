@@ -4,9 +4,9 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { FirstStep } from '../../src/components/onboarding/first-step'
 
 export default function Creators() {
-  const { user } = useAuth0()
+  const { isLoading, isAuthenticated } = useAuth0()
 
-  if(!user) return <div>Please login</div>
+  if(isLoading || !isAuthenticated) return <div>Please login</div>
 
   return <FirstStep />
 }
