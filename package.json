@@ -15,7 +15,7 @@
     "@mui/material": "latest",
     "clsx": "latest",
     "next": "latest",
-    "prop-types": "latest",
+    "next-auth": "^4.0.0-beta.4",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^7.17.5"
