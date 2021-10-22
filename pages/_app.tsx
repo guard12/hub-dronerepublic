@@ -6,6 +6,10 @@ import { CacheProvider } from '@emotion/react';
 import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
 import { Auth0Provider } from '@auth0/auth0-react'
+import { useAuth0 } from '@auth0/auth0-react'
+import { Grid } from '@mui/material'
+
+import { NavBar } from '../src/components/navigation'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -25,9 +29,16 @@ export default function MyApp(props) {
           <Auth0Provider
             domain={process.env.NEXT_PUBLIC_AUTH_DOMAIN}
             clientId={process.env.NEXT_PUBLIC_CLIENT_ID}
-            redirectUri={"http://localhost:3000/"}
+            redirectUri={"http://localhost:3000/onboarding/first-step"}
           >
-            <Component {...pageProps} />
+            <Grid container component="main">
+              <Grid item xs={12}>
+                <NavBar />
+              </Grid>
+              <Grid item xs={12}>
+                <Component {...pageProps} />
+              </Grid>
+            </Grid>
           </Auth0Provider>
         </ThemeProvider>
     </CacheProvider>
